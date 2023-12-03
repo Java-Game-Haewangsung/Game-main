@@ -10,7 +10,7 @@ public class BlackHole extends JLabel {
     private List<Image> blackHoleImages;
     private int currentImageIndex;
     private int setW = 512, setH = 256;
-    private String blackHoleImgPath = "/img/blackHole";
+    private String blackHoleImgPath = "img/blackHole";
 
     public BlackHole(int x, int y) {
         this.blackHoleImages = new ArrayList<>();

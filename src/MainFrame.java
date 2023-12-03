@@ -1,8 +1,10 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.Timer;
 
@@ -28,6 +30,8 @@ public class MainFrame extends JFrame {
         Random random = new Random();
         Image backImg; // 배경 이미지
         Image playerImg; // 플레이어 이미지
+        String backImgPath = "/img/backImg.jpg";
+        String playerImgPath = "/img/playerImg.png";
 
         // 패널 크기
         int width;
@@ -164,9 +168,13 @@ public class MainFrame extends JFrame {
             if (width == 0 || height == 0) {
                 width = getWidth(); // 패널의 너비
                 height = getHeight();
-                Toolkit toolkit = Toolkit.getDefaultToolkit();
-                backImg = toolkit.getImage("src/img/backImg.jpg");
-                playerImg = toolkit.getImage("src/img/playerImg.png");
+                // ImageIO를 사용한 부분
+                try {
+                    backImg = ImageIO.read(getClass().getResourceAsStream("img/backImg.jpg"));
+                    playerImg = ImageIO.read(getClass().getResourceAsStream("img/playerImg.png"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 // 배경 이미지 리사이징
                 backImg = backImg.getScaledInstance(width, height, Image.SCALE_SMOOTH);
