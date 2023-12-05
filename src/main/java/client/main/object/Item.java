@@ -4,7 +4,7 @@ public class Item {
 
     private int itemPrice;
     private int itemId;
-    private String itemName; // 1이면 '모아니면도', 2면 '부스터' 아이템
+    private String itemName; // 1번: '모아니면도', 2번: '부스터' 아이템
     private String itemInfo;
 
     private int itemStock;

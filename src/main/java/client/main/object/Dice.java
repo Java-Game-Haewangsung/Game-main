@@ -43,7 +43,7 @@ public class Dice extends JPanel {
     }
 
     public Image getImage() {
-        // 현재 currentDiceResult를 유효한 범위 내로 조정하기 위해 모듈로 연산자 사용
+        // 현재 currentDiceResult를 유효한 범위 내로 조정
         int index = (currentDiceResult - 1 + diceIcons.length) % diceIcons.length;
         return diceIcons[index].getImage();
     }

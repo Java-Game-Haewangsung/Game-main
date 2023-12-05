@@ -81,7 +81,7 @@ public class MainMapView extends JPanel implements Runnable {
         return null;
     }
 
-    // 타겟 노드가 아닌 동안 중간 노드 밟고 이동 -> repaint 메서드 (이동 모션)
+    // (타겟 노드가 아닌 동안) 중간 노드 밟고 이동 -> repaint 메서드 (이동 모션)
     public void moveNoneTargetNodes(GameUser player, PlanetNode targetNode) {
         List<PlanetNode> nonTargetNodes = getNonTargetNodes(player.getCurrentNode(), targetNode);
         currentIndex = 0;
@@ -132,7 +132,7 @@ public class MainMapView extends JPanel implements Runnable {
                 nonTargetNodes.add(findNodeById(nodeId));
             }
         } else {
-            // 반시계 방향으로 노드를 가져오는 경우(16번 -> 1번 노드 이동 시)
+            // 반시계 방향으로 노드를 가져오는 경우(ex.16번 -> 1번 노드 이동 시)
             for (int nodeId = startNodeId + 1; nodeId <= 16; nodeId++) {
                 nonTargetNodes.add(findNodeById(nodeId));
             }
@@ -163,7 +163,7 @@ public class MainMapView extends JPanel implements Runnable {
 
     // 랜덤 노드에 태양 생성
     public void createSun() {
-        // nodes 리스트가 비어있으면 아무 작업도 수행하지 않음
+        // nodes 리스트(노드들 정보) 비어있으면 아무 작업도 수행하지 않음
         if (nodes == null || nodes.isEmpty()) {
             System.out.println("태양 생성 불가");
             return;
@@ -179,7 +179,6 @@ public class MainMapView extends JPanel implements Runnable {
         PlanetNode randomNode = nodes.get(randomIndex);
 //        randomNode = nodes.get(5); // 테스트용
         sun = new Sun(randomNode);
-
 
         sun.setImg(resizeImage(sun.getImg(), 32, 32));
         System.out.println("태양 생성 노드: " + randomNode.getId());
@@ -209,9 +208,6 @@ public class MainMapView extends JPanel implements Runnable {
 
         // 테두리 이미지 배치
         int totalSize = gridSize * gridCount + gap * (gridCount - 1);
-        int startX = (800 - totalSize) / 2;
-        int startY = (800 - totalSize) / 2;
-        int distY = 0;
 
         // 행성 노드 생성 및 추가
         for (int i = 0; i < 16; i++) {
@@ -220,7 +216,7 @@ public class MainMapView extends JPanel implements Runnable {
             planetImages[i] = resizeImage(img, 70, 70);
         }
 
-        // 노드 생성
+        // 절대 좌표에 노드들 생성
         nodes.add(new PlanetNode(1, 125, 125, planetImages[0], coinInfo[0]));
         nodes.add(new PlanetNode(2, 245, 125, planetImages[1], coinInfo[1]));
         nodes.add(new PlanetNode(3, 365, 125, planetImages[2], coinInfo[2]));
@@ -242,6 +238,7 @@ public class MainMapView extends JPanel implements Runnable {
         for (int i = 0; i < 3; i++) {
             GameUser u = users.get(i);
             PlanetNode node = nodes.get(0);
+            // 노드 이미지 처리
             String imagePath = playerImgPath + (i + 1) + ".png";
             Image image = tk.getImage(imagePath);
             playerImages[i] = resizeImage(image, 64, 64);
@@ -261,7 +258,7 @@ public class MainMapView extends JPanel implements Runnable {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // 마우스 클릭 시 주사위를 굴린다.
+                // 마우스 클릭 시 주사위 굴림
                 dice.startRolling();
                 dice.rollDice();
 
@@ -314,8 +311,8 @@ public class MainMapView extends JPanel implements Runnable {
 
         // 주사위 굴리기 전에 아이템 확인
         if (turnPlayer.getUserItems().size() > 0 && turnPlayer.getItemSize() > 0) {
-            turnPlayer.decreaseItemSize();
-            turnPlayer.showUserItems();
+            turnPlayer.decreaseItemSize(); // 아이템 수 감소시킴(이후 던질 때 아이템 창 안 뜨게)
+            turnPlayer.showUserItems(); // 아이템 정보 보여주고 사용할 건지 체크
         }
 
         repaint();
@@ -337,6 +334,7 @@ public class MainMapView extends JPanel implements Runnable {
         drawScoreBoard(g, users.get(2), 0, getHeight() - boardSize - padding, boardSize, boardSize);
     }
 
+    // 유저 이미지 그리기
     private void drawGameUsers(Graphics g) {
         for (int i = 0; i < users.size(); i++) {
             GameUser u = users.get(i);
@@ -344,6 +342,7 @@ public class MainMapView extends JPanel implements Runnable {
         }
     }
 
+    // 행성 노드들 그리기
     private void drawNodes(Graphics g) {
         for (int i = 0; i < nodes.size(); i++) {
             PlanetNode node = nodes.get(i);
@@ -351,6 +350,7 @@ public class MainMapView extends JPanel implements Runnable {
         }
     }
 
+    // 배경 이미지 그리기
     private void drawBackground(Graphics g) {
         buffG.clearRect(0, 0, frameWidth, frameHeight);
         buffG.drawImage(background, 0, 0, this);

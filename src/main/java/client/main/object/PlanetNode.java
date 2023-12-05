@@ -6,7 +6,6 @@ public class PlanetNode extends Unit {
     private int id;
     private int coin; // 해당 행성에 할당되는 코인 수
     private boolean sun = false; // 해당 노드 태양 생성 여부
-    private String name;
 
     public PlanetNode(int id, int x, int y, Image img, int coin) {
         this.id = id;
