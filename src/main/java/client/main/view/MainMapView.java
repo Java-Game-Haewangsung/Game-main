@@ -90,7 +90,6 @@ public class MainMapView extends JPanel implements Runnable {
             @Override
             public void actionPerformed(ActionEvent e) {
                 player.moveToNode(nonTargetNodes.get(currentIndex));
-                System.out.println("현재 노드 ID: " + nonTargetNodes.get(currentIndex).getId()); // (테스트용) 노드 id 찍어보기
                 repaint();
                 // 태양 존재 검사
                 if (nonTargetNodes.get(currentIndex).isSun() == true)
@@ -103,7 +102,6 @@ public class MainMapView extends JPanel implements Runnable {
                 if (currentIndex == nonTargetNodes.size() - 1) {
                     ((Timer) e.getSource()).stop();
                     player.moveToNode(targetNode);
-                    System.out.println("현재 노드 id: " + targetNode.getId()); // (테스트용) 노드 id 찍어보기
 
                     // 도착 노드가 상점이면 상점 실행
                     if (targetNode == nodes.get(9))
