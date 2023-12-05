@@ -2,7 +2,7 @@ package client.main.view;
 
 import client.main.GameRoom;
 import client.main.GameUser;
-import client.main.mainmap.Dice;
+import client.main.object.Dice;
 import client.main.member.Member;
 import client.main.object.PlanetNode;
 
