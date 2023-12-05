@@ -45,8 +45,8 @@ public class Main extends JFrame {
         users.add(g2);
         users.add(g3);
         users.add(g4);
-//        MainMapView mainMapView = new MainMapView(g1, users, RoomManager.createRoom());
-        MainMapView mainMapView = new MainMapView(users, RoomManager.createRoom());
+        MainMapView mainMapView = new MainMapView(g1, users, RoomManager.createRoom());
+//        MainMapView mainMapView = new MainMapView(users, RoomManager.createRoom());
         new Thread(mainMapView).start();
         Random miniRan = new Random(2);
         int ranNum = miniRan.nextInt();
