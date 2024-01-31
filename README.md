@@ -25,7 +25,7 @@
 <br>
 <br>
 
-![플로우차트(https://github.com/Java-Game-Haewangsung/Game-main/assets/80021912/b10d648e-6b49-40d8-9c03-4321c879e5cd)
+![플로우차트](https://github.com/Java-Game-Haewangsung/Game-main/assets/80021912/b10d648e-6b49-40d8-9c03-4321c879e5cd)
 ![미니게임1](https://github.com/Java-Game-Haewangsung/Game-main/assets/80021912/fa6d4ee4-23a7-45a9-b106-e897a0e995d1)
 ![미니게임2](https://github.com/Java-Game-Haewangsung/Game-main/assets/80021912/009765fe-fc12-48c1-914d-3dd8f51b1e67)
 ![미니게임3](https://github.com/Java-Game-Haewangsung/Game-main/assets/80021912/000592b4-d98c-4f61-97c2-9f6caa32b3ad)
